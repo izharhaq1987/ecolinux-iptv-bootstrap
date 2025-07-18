@@ -14,27 +14,27 @@ This micro-project is designed for embedded systems and firmware environments li
 ## 🗂 Project Structure
 
 ecolinux-iptv-bootstrap/
-├── app/                                # Python FastAPI app logic
+├── app/                     # Python FastAPI app logic
 │   ├── __init__.py
-│   └── main.py                         # Your FastAPI app
+│   └── main.py              # Your FastAPI app
 │
-├── scripts/                            # Shell automation scripts
+├── scripts/                 # Shell automation scripts
 │   └── install.sh
 │
-├── services/                           # OS-level or background services
-│   └── iptv.service                    # systemd unit file
+├── services/                # OS-level or background services
+│   └── iptv.service         # systemd unit file
 │
-├── test_data/                          # Optional test IPTV playlist
+├── test_data/               # Optional test IPTV playlist
 │   └── playlist.m3u8
 │
-├── docs/                               # Documentation and visual artifacts
+├── docs/                    # Documentation and visual artifacts
 │   └── screenshot_terminal_output.png
 │
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── requirements.txt                    # Add this for pip-based installs (optional)
-└── run_dev.sh                          # Optional helper to run uvicorn locally
+├── requirements.txt         # Add this for pip-based installs (optional)
+└── run_dev.sh               # Optional helper to run uvicorn locally
 
 
 ---

@@ -1,0 +1,6 @@
+#EXTM3U
+#EXTINF:-1, Sample Channel 1
+http://example.com/fake_stream1.ts
+
+#EXTINF:-1, Sample Channel 2
+http://example.com/fake_stream2.ts

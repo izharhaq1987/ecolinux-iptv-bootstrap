@@ -40,10 +40,8 @@ ecolinux-iptv-bootstrap/
 ├── requirements.txt         # Project dependencies
 └── run_dev.sh               # Dev launcher script for FastAPI
 
-## Running the App (Dev Mode)
+##  Running the App (Dev Mode)
 To launch the FastAPI app in development mode using the helper script:
-
-./run_dev.sh
 This script will:
 Activate the testenv virtual environment
 Validate that uvicorn is installed

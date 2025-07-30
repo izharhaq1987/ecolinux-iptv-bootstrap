@@ -5,36 +5,38 @@ A lightweight Linux-based IPTV provisioning utility that installs media playback
 This micro-project is designed for embedded systems and firmware environments like EcoLinux where IPTV clients may need to be auto-configured with systemd and minimal CLI interaction.
 
 ## Project Goals
-
-- Automate installation of IPTV playback tools (e.g., `ffmpeg`, `vlc`)
-- Start FastAPI service to expose `/` and `/status` endpoints
-- Provide systemd service file for boot-time IPTV start
-- Demonstrate real-world shell + Python automation in Linux-based systems
+I. A new "Running the App (Dev Mode)" section featuring run_dev.sh
+II. The Project Structure diagram updated to include app/ and run_dev.sh
+III. Clean formatting and Allman-style clarity
+IV. Automate installation of IPTV playback tools (e.g., `ffmpeg`, `vlc`)
+V. Start FastAPI service to expose `/` and `/status` endpoints
+VI. Provide systemd service file for boot-time IPTV start
+VII. Demonstrate real-world shell + Python automation in Linux-based systems
 
 ## 🗂 Project Structure
 
 ecolinux-iptv-bootstrap/
 ├── app/                     # Python FastAPI app logic
 │   ├── __init__.py
-│   └── main.py              # Your FastAPI app
+│   └── main.py              # Your FastAPI app entrypoint
+│
+├── docs/                    # Documentation and screenshots
+│   └── screenshot_terminal_output.png
 │
 ├── scripts/                 # Shell automation scripts
 │   └── install.sh
 │
-├── services/                # OS-level or background services
-│   └── iptv.service         # systemd unit file
+├── services/                # OS-level services
+│   └── iptv.service
 │
-├── test_data/               # Optional test IPTV playlist
+├── test_data/               # Sample IPTV playlist
 │   └── playlist.m3u8
-│
-├── docs/                    # Documentation and visual artifacts
-│   └── screenshot_terminal_output.png
 │
 ├── .gitignore
 ├── LICENSE
 ├── README.md
-├── requirements.txt         # Add this for pip-based installs (optional)
-└── run_dev.sh               # Optional helper to run uvicorn locally
+├── requirements.txt         # Project dependencies
+└── run_dev.sh               # Dev launcher script for FastAPI
 
 
 ---

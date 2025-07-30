@@ -1,9 +1,10 @@
-# EcoLinux IPTV Bootstrap Script
+#  EcoLinux IPTV Bootstrap Script
 
-A lightweight Linux-based IPTV provisioning utility that installs media playback dependencies and starts a FastAPI service for basic control and status reporting.
+A lightweight Linux-based IPTV provisioning utility that installs media playback dependencies and starts a FastAPI API server for basic control and health-check functionality.
 
-This micro-project is designed for embedded systems and firmware environments like EcoLinux where IPTV clients may need to be auto-configured with systemd and minimal CLI interaction.
+This project is tailored for embedded Linux firmware (like EcoLinux) where IPTV clients must be deployed via systemd, shell scripts, and web APIs.
 
+HEAD
 ## Project Goals
 I. A new "Running the App (Dev Mode)" section featuring run_dev.sh
 II. The Project Structure diagram updated to include app/ and run_dev.sh
@@ -13,8 +14,9 @@ V. Start FastAPI service to expose `/` and `/status` endpoints
 VI. Provide systemd service file for boot-time IPTV start
 VII. Demonstrate real-world shell + Python automation in Linux-based systems
 
-## 🗂 Project Structure
+##  **Project Structure**
 
+```text
 ecolinux-iptv-bootstrap/
 ├── app/                     # Python FastAPI app logic
 │   ├── __init__.py
@@ -38,47 +40,63 @@ ecolinux-iptv-bootstrap/
 ├── requirements.txt         # Project dependencies
 └── run_dev.sh               # Dev launcher script for FastAPI
 
+Running the App (Dev Mode)
+To launch the FastAPI app in development mode using the helper script:
 
----
+./run_dev.sh
+This script will:
+Activate the testenv virtual environment
+Validate that uvicorn is installed
+Start the app with --reload for live code reloading
 
-##  Usage Instructions
+If the environment is missing, it will instruct you to run:
+python3 -m venv testenv
+source testenv/bin/activate
+pip install -r requirements.txt
 
-### 1. Clone and Run Installer
+API Endpoints
+| Method | Endpoint  | Description                       |
+| ------ | --------- | --------------------------------- |
+| GET    | `/`       | Returns greeting message          |
+| GET    | `/status` | Returns service health and uptime |
 
-```bash
-git clone https://github.com/izharhaq1987/ecolinux-iptv-bootstrap.git
-cd ecolinux-iptv-bootstrap
-chmod +x install.sh
-sudo ./install.sh
-**Start FastAPI Server (Dev Mode)**
-source ~/env/bin/activate
-uvicorn main:app --reload
+Interactive Swagger Docs:
+http://127.0.0.1:8000/docs
 
-**Visit:**
+Systemd Integration
+To enable the IPTV service at boot:
+sudo cp services/iptv.service /etc/systemd/system/iptv.service
+sudo systemctl daemon-reexec
+sudo systemctl enable iptv.service
+sudo systemctl start iptv.service
 
-http://127.0.0.1:8000/
+Installation Script
+Run this to install all dependencies and configure the service:
 
-http://127.0.0.1:8000/status
+Test Playlist
+Included in test_data/playlist.m3u8:
+#EXTM3U
+#EXTINF:-1, Sample Channel 1
+http://example.com/stream1.ts
 
-http://127.0.0.1:8000/docs – Swagger UI
+#EXTINF:-1, Sample Channel 2
+http://example.com/stream2.ts
 
-**Tech Stack**
+Screenshot
+
+
+Tech Stack
 Bash (Allman style scripting)
-
 FastAPI (Python 3.12)
-
 ffmpeg / VLC
 
 systemd
-
 EcoLinux-compatible setup
 
+ License
+MIT License — free to use, modify, and share.
 
 Maintained by
-**Izhar Haq**
+Izhar Haq
 Senior Embedded & Software Engineer
-https://github.com/izharhaq1987
-
-
-
-
+github.com/izharhaq1987

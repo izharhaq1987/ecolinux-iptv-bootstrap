@@ -16,3 +16,4 @@ __pycache__/
 # Media playlist/test data
 *.m3u8
 *.ts
+testenv/

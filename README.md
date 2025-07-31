@@ -4,17 +4,18 @@ A lightweight Linux-based IPTV provisioning utility that installs media playback
 
 This project is tailored for embedded Linux firmware (like EcoLinux) where IPTV clients must be deployed via systemd, shell scripts, and web APIs.
 
-HEAD
-## Project Goals
-I. A new "Running the App (Dev Mode)" section featuring run_dev.sh
-II. The Project Structure diagram updated to include app/ and run_dev.sh
-III. Clean formatting and Allman-style clarity
-IV. Automate installation of IPTV playback tools (e.g., `ffmpeg`, `vlc`)
-V. Start FastAPI service to expose `/` and `/status` endpoints
-VI. Provide systemd service file for boot-time IPTV start
-VII. Demonstrate real-world shell + Python automation in Linux-based systems
+---
 
-##  **Project Structure**
+##  Project Goals
+
+- Automate the installation of IPTV playback tools (e.g., `ffmpeg`, `vlc`)
+- Expose a FastAPI-based service with `/` and `/status` endpoints
+- Provide a systemd unit to auto-start the player on boot
+- Showcase Linux scripting, API integration, and system orchestration
+
+---
+
+##  Project Structure
 
 ```text
 ecolinux-iptv-bootstrap/
@@ -34,20 +35,21 @@ ecolinux-iptv-bootstrap/
 ├── test_data/               # Sample IPTV playlist
 │   └── playlist.m3u8
 │
+├── .dockerignore
 ├── .gitignore
 ├── LICENSE
 ├── README.md
 ├── requirements.txt         # Project dependencies
 └── run_dev.sh               # Dev launcher script for FastAPI
 
-##  Running the App (Dev Mode)
-To launch the FastAPI app in development mode using the helper script:
+Running the App (Dev Mode)
+./run_dev.sh
 This script will:
 Activate the testenv virtual environment
 Validate that uvicorn is installed
-Start the app with --reload for live code reloading
+Start the FastAPI app using --reload for live development
 
-If the environment is missing, it will instruct you to run:
+If the environment is missing, run:
 python3 -m venv testenv
 source testenv/bin/activate
 pip install -r requirements.txt
@@ -68,8 +70,34 @@ sudo systemctl daemon-reexec
 sudo systemctl enable iptv.service
 sudo systemctl start iptv.service
 
+Docker Hub Image
+This project is published to Docker Hub:
+https://hub.docker.com/r/izharhaq86/ecolinux-iptv
+You can pull and run it directly:
+docker pull izharhaq86/ecolinux-iptv
+docker run -d -p 8000:8000 izharhaq86/ecolinux-iptv
+
+Docker Usage (Manual Build)
+Build the Docker Image
+docker build -t ecolinux-iptv .
+
+Run the Docker Container
+docker run -d -p 8000:8000 ecolinux-iptv
+
+Optional: Mount Local Playlist into Container
+docker run -d -p 8000:8000 \
+-v $(pwd)/test_data/playlist.m3u8:/app/test_data/playlist.m3u8 \
+ecolinux-iptv
+
+ (Optional) Stop and Remove Container
+docker ps                 # View running containers
+docker stop <container_id>
+docker rm <container_id>
+
 Installation Script
-Run this to install all dependencies and configure the service:
+To install all dependencies and configure the system on bare metal:
+chmod +x scripts/install.sh
+sudo ./scripts/install.sh
 
 Test Playlist
 Included in test_data/playlist.m3u8:
@@ -80,50 +108,19 @@ http://example.com/stream1.ts
 #EXTINF:-1, Sample Channel 2
 http://example.com/stream2.ts
 
-Screenshot
-
-
 Tech Stack
 Bash (Allman style scripting)
 FastAPI (Python 3.12)
 ffmpeg / VLC
-
 systemd
 EcoLinux-compatible setup
 
-##  Docker Usage
-You can run the IPTV bootstrap app entirely in Docker.
-
-###  Build the Docker Image
-From the root of the project:
-```bash
-docker build -t ecolinux-iptv .
-docker run -d -p 8000:8000 ecolinux-iptv
-Now access the API:
-http://127.0.0.1:8000
-http://127.0.0.1:8000/docs
-Optional: Mount Local Playlist into Container
-You can override the default test playlist by mounting a custom one:
-docker run -d -p 8000:8000 \
-  -v $(pwd)/test_data/playlist.m3u8:/app/test_data/playlist.m3u8 \
-  ecolinux-iptv
-
-Stop and Remove Container
-docker ps               # Find the container ID
-docker stop <container_id>
-docker rm <container_id>
-
-
-## To Add It:
-
-1. Open the `README.md`:
-   ```bash
-   nano README.md
-
- License
+License
 MIT License — free to use, modify, and share.
 
 Maintained by
 Izhar Haq
 Senior Embedded & Software Engineer
 github.com/izharhaq1987
+
+

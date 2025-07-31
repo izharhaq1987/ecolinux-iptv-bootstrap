@@ -91,6 +91,35 @@ ffmpeg / VLC
 systemd
 EcoLinux-compatible setup
 
+##  Docker Usage
+You can run the IPTV bootstrap app entirely in Docker.
+
+###  Build the Docker Image
+From the root of the project:
+```bash
+docker build -t ecolinux-iptv .
+docker run -d -p 8000:8000 ecolinux-iptv
+Now access the API:
+http://127.0.0.1:8000
+http://127.0.0.1:8000/docs
+Optional: Mount Local Playlist into Container
+You can override the default test playlist by mounting a custom one:
+docker run -d -p 8000:8000 \
+  -v $(pwd)/test_data/playlist.m3u8:/app/test_data/playlist.m3u8 \
+  ecolinux-iptv
+
+Stop and Remove Container
+docker ps               # Find the container ID
+docker stop <container_id>
+docker rm <container_id>
+
+
+## To Add It:
+
+1. Open the `README.md`:
+   ```bash
+   nano README.md
+
  License
 MIT License — free to use, modify, and share.
 

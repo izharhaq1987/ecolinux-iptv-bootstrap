@@ -108,6 +108,31 @@ http://example.com/stream1.ts
 #EXTINF:-1, Sample Channel 2
 http://example.com/stream2.ts
 
+##  Screenshot
+
+###  Uvicorn Running in Terminal
+
+![Uvicorn Running](docs/Uvicorn_running.jpg)
+
+---
+
+###  FastAPI `/docs` - Swagger UI
+
+![Swagger UI](docs/screenshot_swagger_ui.jpg)
+
+---
+
+###  Status Endpoint Response
+
+![Status Output](docs/Status.jpg)
+
+---
+
+###  Terminal Output Snapshot
+
+![Terminal Output](docs/screenshot_terminal_output.jpg)
+ 
+
 Tech Stack
 Bash (Allman style scripting)
 FastAPI (Python 3.12)

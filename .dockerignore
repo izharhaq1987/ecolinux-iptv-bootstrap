@@ -1,0 +1,14 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
+
+# Ignore venv
+testenv/
+
+# Ignore Git
+.git/
+.gitignore
+
+# Ignore OS junk
+.DS_Store
+Thumbs.db

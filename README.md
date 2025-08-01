@@ -112,21 +112,15 @@ http://example.com/stream2.ts
 
 ###  Uvicorn Running in Terminal
 
-![Uvicorn Running](docs/Uvicorn_running.jpg)
-
----
+![Uvicorn](docs/uvicorn.jpg)
 
 ###  FastAPI `/docs` - Swagger UI
 
 ![Swagger UI](docs/screenshot_swagger_ui.jpg)
 
----
-
 ###  Status Endpoint Response
 
-![Status Output](docs/Status.jpg)
-
----
+![Status](docs/status.jpg)
 
 ###  Terminal Output Snapshot
 

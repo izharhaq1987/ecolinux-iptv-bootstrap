@@ -1,0 +1,47 @@
+name: Check README image references
+
+on:
+  push:
+    paths:
+      - README.md
+      - docs/**
+  pull_request:
+    paths:
+      - README.md
+      - docs/**
+
+jobs:
+  validate-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Check for missing screenshots
+        run: |
+          echo "Checking README.md for referenced image files..."
+
+          grep -oP '(?<=!\[.*\]\()docs/.*?\.(jpg|jpeg|png|gif)(?=\))' README.md > referenced_images.txt || true
+
+          echo " Referenced files:"
+          cat referenced_images.txt
+
+          missing_files=0
+
+          while IFS= read -r img
+          do
+            if [ ! -f "$img" ]
+            then
+              echo " Missing file: $img"
+              missing_files=$((missing_files+1))
+            fi
+          done < referenced_images.txt
+
+          if [ "$missing_files" -ne 0 ]
+          then
+            echo " One or more referenced images are missing in docs/. Fix the broken links."
+            exit 1
+          else
+            echo " All referenced images exist in docs/"
+          fi

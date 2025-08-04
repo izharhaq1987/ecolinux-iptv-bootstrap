@@ -110,7 +110,7 @@ http://example.com/stream2.ts
 
 ##  Screenshot
 
-###  Uvicorn Running in Terminal
+### Uvicorn Running in Terminal
 
 ![Uvicorn](docs/uvicorn.png)
 

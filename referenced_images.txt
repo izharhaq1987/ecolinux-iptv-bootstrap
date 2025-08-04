@@ -1,0 +1,4 @@
+docs/screenshot_swagger_ui.png
+docs/screenshot_terminal_output.png
+docs/status.png
+docs/uvicorn.png

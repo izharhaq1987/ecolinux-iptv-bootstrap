@@ -108,23 +108,23 @@ http://example.com/stream1.ts
 #EXTINF:-1, Sample Channel 2
 http://example.com/stream2.ts
 
-##  Screenshot
+## Screenshot
 
-###  Uvicorn Running in Terminal
+### Uvicorn Running in Terminal
 
 ![Uvicorn](docs/uvicorn.png)
 
-###  FastAPI `/docs` - Swagger UI
+### Swagger UI
 
 ![Swagger UI](docs/screenshot_swagger_ui.png)
 
-###  Status Endpoint Response
+### Status Response
 
-![Status](docs/status.png)
+![Status](docs/status.png
 
-###  Terminal Output Snapshot
+### Terminal Output Snapshot
 
-![Terminal Output](docs/screenshot_terminal_output.png)
+![Terminal Output](docs/screenshot_terminal_output.png
  
 
 Tech Stack
